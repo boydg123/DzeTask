@@ -3,3 +3,20 @@
 ################################################################################
 
 *.dll
+*.pdb
+/DzeTask.Application/bin/Debug
+/DzeTask.Application/obj/Debug
+/DzeTask.Core/bin/Debug
+/DzeTask.Core/obj/Debug
+/DzeTask.EntityFramework/bin/Debug
+/DzeTask.EntityFramework/obj/Debug
+/DzeTask.Web/bin
+/DzeTask.Web/obj/Debug
+/DzeTask.WebApi/bin/Debug
+/DzeTask.WebApi/obj/Debug
+/packages
+/Tests/DzeTask.Tests/bin/Debug
+/Tests/DzeTask.Tests/obj/Debug
+/Tools/DzeTask.Migrator/bin/Debug
+/.vs
+/Tools/DzeTask.Migrator/obj/Debug

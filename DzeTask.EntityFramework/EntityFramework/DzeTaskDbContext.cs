@@ -1,14 +1,17 @@
 ﻿using System.Data.Common;
+using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using DzeTask.Authorization.Roles;
 using DzeTask.Authorization.Users;
 using DzeTask.MultiTenancy;
+using DzeTask.Tasks;
 
 namespace DzeTask.EntityFramework
 {
     public class DzeTaskDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+        public IDbSet<Task> Tasks { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

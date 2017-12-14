@@ -193,6 +193,7 @@
     <Compile Include="Configuration\AppSettingProvider.cs" />
     <Compile Include="Editions\EditionManager.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
+    <Compile Include="IRepositories\IBackendTaskRepository.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Authorization\Users\User.cs" />
     <Compile Include="Authorization\Users\UserManager.cs" />
     <Compile Include="Authorization\Users\UserStore.cs" />
+    <Compile Include="Tasks\Task.cs" />
     <Compile Include="Validation\ValidationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
