@@ -5,6 +5,7 @@ using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Modules;
+using Castle.MicroKernel.Registration;
 using DzeTask.Authorization.Roles;
 using DzeTask.Authorization.Users;
 using DzeTask.Roles.Dto;
@@ -23,6 +24,15 @@ namespace DzeTask
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
+            //注册IDtoMapping
+            IocManager.IocContainer.Register(Classes.FromAssembly(Assembly.GetExecutingAssembly())
+                    .IncludeNonPublicTypes()
+                    .BasedOn<IDtoMapping>()
+                    .WithService.Self()
+                    .WithService.DefaultInterfaces()
+                    .LifestyleTransient()
+                );
+
             // TODO: Is there somewhere else to store these, with the dto classes
             Configuration.Modules.AbpAutoMapper().Configurators.Add(cfg =>
             {
@@ -38,6 +48,15 @@ namespace DzeTask
 
                 cfg.CreateMap<CreateUserDto, User>();
                 cfg.CreateMap<CreateUserDto, User>().ForMember(x => x.Roles, opt => opt.Ignore());
+            });
+            //解析依赖，并进行映射规则创建
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(mapper => 
+            {
+                var mappers = IocManager.IocContainer.ResolveAll<IDtoMapping>();
+                foreach (var dtomap in mappers)
+                {
+                    dtomap.CreateMapping(mapper);
+                }
             });
         }
     }
